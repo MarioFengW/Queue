@@ -2,28 +2,20 @@
 #define QUEUE_H
 
 class Queue {
-    private: 
-        int front;
-        int rear;
-        int size;
-        int* queue;
+protected:
+    int* queue;
+    int front;
+    int rear;
+    int capacity;
 
-    public:
-        Queue(int capacity);
-
-        bool isEmpty();
-
-        bool isFull();
-
-        void enqueue(int value);
-
-        void dequeue();
-
-        int frontElement();
-
-        ~Queue();
-
+public:
+    Queue(int capacity);
+    ~Queue();
+    bool isEmpty();
+    bool isFull();
+    void enqueue(int value);
+    void dequeue();
+    int frontElement();
 };
 
-
-#endif
+#endif 

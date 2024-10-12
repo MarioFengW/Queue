@@ -6,8 +6,8 @@ using namespace std;
 Queue::Queue(int capacity) {
     front = -1;
     rear = -1;
-    size = capacity;
-    queue = new int[size];
+    this->capacity = capacity;
+    queue = new int[capacity];
 }
 
 bool Queue::isEmpty() {
@@ -15,12 +15,12 @@ bool Queue::isEmpty() {
 }
 
 bool Queue::isFull() {
-    return rear == size - 1;
+    return rear == capacity - 1;
 }
 
 void Queue::enqueue(int value) {
     if (isFull()) {
-        cout << "Queue esta lleno: " << endl;
+        cout << "Queue is full" << endl;
         return;
     }
 
@@ -29,15 +29,15 @@ void Queue::enqueue(int value) {
     }
 
     queue[++rear] = value;
-    cout << value << " enqueue to queue " << endl;
+    cout << value << " Enqueued to queue" << endl;
 }
 
 void Queue::dequeue() {
     if (isEmpty()) {
-        cout << "Empty queue" << endl;
+        cout << "Queue is empty" << endl;
         return;
     }
-    cout << queue[front] << " dequeue front" << endl;
+    cout << queue[front] << " Dequeued from queue" << endl;
     front++;
 
     if (front > rear) {
@@ -47,14 +47,12 @@ void Queue::dequeue() {
 }
 
 int Queue::frontElement() {
-
-    if(isEmpty()) {
-        cout << "Empty queue" << endl;
+    if (isEmpty()) {
+        cout << "Queue is empty" << endl;
         return -1;
     }
     return queue[front];
 }
-
 
 Queue::~Queue() {
     delete[] queue;
